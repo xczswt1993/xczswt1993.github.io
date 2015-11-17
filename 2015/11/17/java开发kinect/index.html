@@ -53,15 +53,31 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="自由的虫子">
-<meta property="og:url" content="http://xiaochonzi.tk/index.html">
+<meta name="description" content="###前言    由于自己在做毕设，需要使用Kinect。但官方给出的SDK是用c和c++写的，对于那些想用java开发的人来说（比如说我）就毫无意义了，所以这篇文章特别适合想用java开发kinect的人看。我google了很多资料，搭建了一个比较适合java开发的环境。（说实话google了很久，google都要被我翻烂了）
+###所需要的软件
+
+
+eclipse 
+openni-win64-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java开发kinect">
+<meta property="og:url" content="http://xiaochonzi.tk/2015/11/17/java开发kinect/index.html">
 <meta property="og:site_name" content="自由的虫子">
-<meta property="og:description">
+<meta property="og:description" content="###前言    由于自己在做毕设，需要使用Kinect。但官方给出的SDK是用c和c++写的，对于那些想用java开发的人来说（比如说我）就毫无意义了，所以这篇文章特别适合想用java开发kinect的人看。我google了很多资料，搭建了一个比较适合java开发的环境。（说实话google了很久，google都要被我翻烂了）
+###所需要的软件
+
+
+eclipse 
+openni-win64-">
+<meta property="og:updated_time" content="2015-11-17T01:35:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自由的虫子">
-<meta name="twitter:description">
+<meta name="twitter:title" content="java开发kinect">
+<meta name="twitter:description" content="###前言    由于自己在做毕设，需要使用Kinect。但官方给出的SDK是用c和c++写的，对于那些想用java开发的人来说（比如说我）就毫无意义了，所以这篇文章特别适合想用java开发kinect的人看。我google了很多资料，搭建了一个比较适合java开发的环境。（说实话google了很久，google都要被我翻烂了）
+###所需要的软件
+
+
+eclipse 
+openni-win64-">
 
 
 
@@ -73,7 +89,7 @@
   };
 </script>
 
-  <title> 自由的虫子 </title>
+  <title> java开发kinect | 自由的虫子 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -94,9 +110,7 @@
 
 
 
-  <div class="container one-column 
-   page-home 
-">
+  <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -173,24 +187,9 @@
       <div class="main-inner">
         <div id="content" class="content">
           
-  <section id="posts" class="posts-expand">
 
+  <div id="posts" class="posts-expand">
     
-
-    
-    
-      
-      
-        
-        
-        
-      
-
-      
-    
-
-    
-      
 
   
   
@@ -210,10 +209,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2015/11/17/java开发kinect/" itemprop="url">
-                  java开发kinect
-                </a>
+                java开发kinect
               
             
           </h1>
@@ -246,10 +242,7 @@
       
 
       
-        
-          <span itemprop="articleBody">
-            
-              <p>###前言<br>    由于自己在做毕设，需要使用Kinect。但官方给出的SDK是用c和c++写的，对于那些想用java开发的人来说（比如说我）就毫无意义了，所以这篇文章特别适合想用java开发kinect的人看。我google了很多资料，搭建了一个比较适合java开发的环境。（说实话google了很久，google都要被我翻烂了）</p>
+        <span itemprop="articleBody"><p>###前言<br>    由于自己在做毕设，需要使用Kinect。但官方给出的SDK是用c和c++写的，对于那些想用java开发的人来说（比如说我）就毫无意义了，所以这篇文章特别适合想用java开发kinect的人看。我google了很多资料，搭建了一个比较适合java开发的环境。（说实话google了很久，google都要被我翻烂了）</p>
 <p>###所需要的软件</p>
 <blockquote>
 <ul>
@@ -272,10 +265,7 @@
 <p>在以上软件安装好了之后，插上kinect设备，等待驱动的安装。验证驱动是否安装成功，可以运行C:\Program Files\OpenNI\Samples\Bin64\Release该目录的事例NiUserTracker64.exe，如果出现丢失<strong>openNi64.dll</strong>的问题，那么恭喜你，你要全部卸载然后重新安装以上软件。</p>
 <p>###配置eclipse<br>打开eclipse菜单<strong>windows-&gt;preferences-&gt;java-&gt;build path-&gt;user libraries</strong> 点击new，在user library name下填上：opencv2.4.11代表opencv库及版本，然后在点击新建好的库，点击Add External JARs，在 <strong>C:\opencv\build\java</strong> 目录下选中<strong>opencv-2411.jar</strong>。这样还没有结束，还需要添加动态链接库，在选中native library location 然后点击edit找到<strong>C:/opencv/build/java/x64</strong>即可，这样就能在运行时加载动态库，请注意x64代表是64位机子，如果是32位机子请选中x86路径。<br>同理添加opencv库和jar包，我是添加的文件夹下所有jar包，不过javacv不提供动态库，所以就省略了添加动态库链接，因为javacv的jar包中已经包含了编译好的动态库。请注意在javacv提供多个平台的jar包，去掉就行。<br>添加openNi的库和包，同时还需要动态库路径。包<strong>org.OpenNi.jar</strong> <strong>C:\Program Files\OpenNI\Bin64</strong><br>注意：包和动态链接库应该处于同一目录下面</p>
 <p>至此，整个java开发kinect的环境就算搭建完成。现在可以通过在eclipse中新建一个java项目实现kinect的功能。</p>
-
-            
-          </span>
-        
+</span>
       
     </div>
 
@@ -283,20 +273,32 @@
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/10/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
 
-  </section>
-
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
         </div>
@@ -305,6 +307,10 @@
 
 
         
+  <div class="comments" id="comments">
+    
+  </div>
+
 
       </div>
 
@@ -325,8 +331,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" src="/images/head.jpg" alt="stone" itemprop="image"/>
           <p class="site-author-name" itemprop="name">stone</p>
@@ -371,6 +386,23 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
       
 
     </div>
@@ -441,6 +473,167 @@
   <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   <script type="text/javascript" src="/js/bootstrap.js"></script>
 
