@@ -212,7 +212,7 @@
               
                 
                 <a class="post-title-link" href="/2015/11/17/java开发kinect/" itemprop="url">
-                  java开发kinect
+                  java开发Kinect
                 </a>
               
             
@@ -222,7 +222,7 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-11-17T09:00:58+08:00" content="2015-11-17">
+            <time itemprop="dateCreated" datetime="2015-11-17T10:44:40+08:00" content="2015-11-17">
               2015-11-17
             </time>
           </span>
@@ -249,29 +249,126 @@
         
           <span itemprop="articleBody">
             
-              <p>###前言<br>    由于自己在做毕设，需要使用Kinect。但官方给出的SDK是用c和c++写的，对于那些想用java开发的人来说（比如说我）就毫无意义了，所以这篇文章特别适合想用java开发kinect的人看。我google了很多资料，搭建了一个比较适合java开发的环境。（说实话google了很久，google都要被我翻烂了）</p>
-<p>###所需要的软件</p>
-<blockquote>
+              <p>由于自己在做毕设，需要使用Kinect。但官方给出的SDK是用c#和c++写的，对于那些想用java开发的人来说（比如说我）就毫无意义了，所以这篇文章特别适合想用java开发kinect的人看。我google了很多资料，搭建了一个比较适合java开发的环境。（说实话google了很久，google都要被我翻烂了）</p>
+<hr>
+<h2 id="所需要的软件">所需要的软件</h2><blockquote>
 <ul>
-<li>eclipse </li>
-<li>openni-win64-1.5.4.0-dev.exe</li>
-<li>nite-win64-1.5.2.21-dev.exe</li>
-<li>SensorKinect092-Bin-Win64-v5.1.2.1.exe</li>
-<li>sensor-win64-5.1.2.1-redist</li>
+<li>eclipse</li>
+<li>openni-win64-1.5.4.0-dev.msi</li>
+<li>nite-win64-1.5.2.21-dev.msi</li>
+<li>SensorKinect092-Bin-Win64-v5.1.2.1.msi</li>
+<li>sensor-win64-5.1.2.1-redist.msi</li>
 </ul>
 </blockquote>
-<p>以上软件需要按顺序安装，我在第一次安装以后验证效果出现丢失openNi64.dll的问题，解决办法：全部卸载以上软件，按顺序重新安装一遍后问题解决。</p>
-<p>###所需要的开源库</p>
-<blockquote>
+<p>以上软件需要按顺序安装，我在第一次安装以后验证效果出现丢失<strong>openNi64.dll</strong>的问题，解决办法：全部卸载以上软件，按顺序重新安装一遍后问题解决。</p>
+<hr>
+<h2 id="所需要的开源库">所需要的开源库</h2><blockquote>
 <ul>
 <li>opencv</li>
 <li>javacv</li>
 </ul>
 </blockquote>
-<p>opencv是一个开源的计算机视觉库，大多数支持c++或者python，提供一个java库，但是这个库实在是太简单了，而且仅仅是实现了一些简单的功能。<br>javacv从名字上与opencv有两个字母的相似，javacv实际上是对opencv的java封装，就是为了方便java开发的使用。javacv与opencv版本对应，现在opencv已经更新到3.0版本，所以javacv的最新版本为1.0。而opencv3.0以前的版本和现在3.0版本区别很大，导致javacv的功能也有了很多改变，以前javacv实现了faceRecognizer功能直接调用就行，现在没有了，很是失望。当然你也可以按照javac维基上的指示按照需求编译javacv，这样就可以实现本来没有的功能。<br>既然有了javacv为什么还要opencv？<br>因为opencv使用的人多，javacv使用的人少，当你出现问题时，去google，搜索到的都是opencv的解决方案，而javacv的就没有，那个时候，你要去使用opencv的库，所以我在开发的时候混合使用opencv和javacv。这之间需要好的协调，毕竟javacv是对opencv的封装，在某些方法上存在同名，但包，返回值，参数都很大的区别，这点千万要注意。</p>
+<p> pencv是一个开源的计算机视觉库，大多数支持c++或者python，提供一个java库，但是这个库实在是太简单了，而且仅仅是实现了一些简单的功能。</p>
+<p>   javacv从名字上与opencv有两个字母的相似，javacv实际上是对opencv的java封装，就是为了方便java开发的使用。javacv与opencv版本对应，现在opencv已经更新到3.0版本，所以javacv的最新版本为1.0。而opencv3.0以前的版本和现在3.0版本区别很大，导致javacv的功能也有了很多改变，以前javacv实现了faceRecognizer功能直接调用就行，现在没有了，很是失望。当然你也可以按照javac维基上的指示按照需求编译javacv，这样就可以实现本来没有的功能。</p>
+<hr>
+<blockquote>
+<p><strong>既然有了javacv为什么还要opencv？</strong></p>
+</blockquote>
+<p>因为opencv使用的人多，javacv使用的人少，当你出现问题时，去google，搜索到的都是opencv的解决方案，而javacv的就没有，那个时候，你要去使用opencv的库，所以我在开发的时候混合使用opencv和javacv。这之间需要好的协调，毕竟javacv是对opencv的封装，在某些方法上存在同名，但包，返回值，参数都很大的区别，这点千万要注意。</p>
 <p>在以上软件安装好了之后，插上kinect设备，等待驱动的安装。验证驱动是否安装成功，可以运行C:\Program Files\OpenNI\Samples\Bin64\Release该目录的事例NiUserTracker64.exe，如果出现丢失<strong>openNi64.dll</strong>的问题，那么恭喜你，你要全部卸载然后重新安装以上软件。</p>
-<p>###配置eclipse<br>打开eclipse菜单<strong>windows-&gt;preferences-&gt;java-&gt;build path-&gt;user libraries</strong> 点击new，在user library name下填上：opencv2.4.11代表opencv库及版本，然后在点击新建好的库，点击Add External JARs，在 <strong>C:\opencv\build\java</strong> 目录下选中<strong>opencv-2411.jar</strong>。这样还没有结束，还需要添加动态链接库，在选中native library location 然后点击edit找到<strong>C:/opencv/build/java/x64</strong>即可，这样就能在运行时加载动态库，请注意x64代表是64位机子，如果是32位机子请选中x86路径。<br>同理添加opencv库和jar包，我是添加的文件夹下所有jar包，不过javacv不提供动态库，所以就省略了添加动态库链接，因为javacv的jar包中已经包含了编译好的动态库。请注意在javacv提供多个平台的jar包，去掉就行。<br>添加openNi的库和包，同时还需要动态库路径。包<strong>org.OpenNi.jar</strong> <strong>C:\Program Files\OpenNI\Bin64</strong><br>注意：包和动态链接库应该处于同一目录下面</p>
+<hr>
+<h2 id="配置eclipse">配置eclipse</h2><p>打开eclipse菜单<strong>windows-&gt;preferences-&gt;java-&gt;build path-&gt;user libraries</strong> 点击new，在user library name下填上：opencv2.4.11代表opencv库及版本，然后在点击新建好的库，点击Add External JARs，在<strong>C:\opencv\build\java</strong>目录下选<strong>中opencv-2411.jar</strong>。这样还没有结束，还需要添加动态链接库，在选中native library location 然后点击edit找到<strong>C:/opencv/build/java/x64</strong>即可，这样就能在运行时加载动态库，请注意x64代表是64位机子，如果是32位机子请选中x86路径。<br>同理添加opencv库和jar包，我是添加的文件夹下所有jar包，不过javacv不提供动态库，所以就省略了添加动态库链接，因为javacv的jar包中已经包含了编译好的动态库。请注意在javacv提供多个平台的jar包，去掉就行。<br>添加openNi的库和包，同时还需要动态库路径。包:<strong>org.OpenNi.jar和动态库路径:C:\Program Files\OpenNI\Bin64</strong><br>注意：包和动态链接库应该处于同一目录下面</p>
+<hr>
 <p>至此，整个java开发kinect的环境就算搭建完成。现在可以通过在eclipse中新建一个java项目实现kinect的功能。</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/10/hello-world/" itemprop="url">
+                  Hello World
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-10T09:57:15+08:00" content="2015-11-10">
+              2015-11-10
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
             
           </span>
